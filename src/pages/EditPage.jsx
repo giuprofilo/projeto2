@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {
+  ArrowRightIcon,
+  PencilSquareIcon,
+  TrashIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 export default function EditPage() {
   const params = useParams();
@@ -9,7 +15,10 @@ export default function EditPage() {
   const [reload, setReload] = useState(false);
   const [showFormEdit, setShowFormEdit] = useState(false);
   const [formEdit, setFormEdit] = useState({
-    question: "",
+    place: "",
+    rating: "",
+    image: "",
+    description: "",
   });
 
   useEffect(() => {
@@ -33,10 +42,36 @@ export default function EditPage() {
       );
       setShowFormEdit(false);
       setReload(!reload);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   }
+
+  function handleShowFormEdit(e) {
+    e.preventDefault();
+    setShowFormEdit(false);
+  }
+
+  function handleChangeEdit(e) {
+    setFormEdit({ ...formEdit, [e.target.name]: e.target.value });
+  }
+
+  async function handleDelete(e) {
+    e.preventDefault();
+
+    try {
+      await axios.delete(
+        `https://webdev103.cyclic.app/travelsite/${params.id}`
+      );
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(place);
 
   return (
     <div className=" bg-background flex flex-col items-center mx-auto py-8">
@@ -48,9 +83,79 @@ export default function EditPage() {
         </p>
         <p>Avaliação:{place.rating}</p>
         <p>Descrição: {place.description}</p>
-        <button className="text-white bg-primary-button px-4 py-2 rounded">
-          Editar
+        <button
+          className="text-white bg-primary-button px-4 py-2 rounded"
+          onClick={() => setShowFormEdit(true)}
+        >
+          <span className="underline text-[#0180C8]">Editar</span>
         </button>
+
+        {showFormEdit && (
+          <form className="fixed inset-0 z-50 flex flex-col justify-center items-center rounded w-full shadow-md bg-gray-300 bg-opacity-50">
+            <div className="bg-white p-4 rounded shadow-lg w-2/3 ">
+              <button
+                className="w-full flex justify-end mb-2"
+                onClick={handleShowFormEdit}
+              >
+                <XMarkIcon
+                  className="h-6 w-6 bg-accent  hover:bg-black hover:text-white"
+                  title="Fechar"
+                />
+              </button>
+
+              <input
+                type="text"
+                name="place"
+                value={formEdit.place}
+                onChange={handleChangeEdit}
+                placeholder="Local"
+                className="border w-full p-2 focus:outline-none resize-none"
+              />
+
+              <input
+                type="text"
+                name="rating"
+                value={formEdit.rating}
+                onChange={handleChangeEdit}
+                placeholder="Dê uma avaliação de 1 a 5"
+                className="border w-full p-2 focus:outline-none resize-none"
+              />
+
+              <input
+                type="text"
+                name="image"
+                value={formEdit.image}
+                onChange={handleChangeEdit}
+                placeholder="Insira a URL da imagem"
+                className="border w-full p-2 focus:outline-none resize-none"
+              />
+
+              <textarea
+                type="text"
+                name="description"
+                value={formEdit.description}
+                onChange={handleChangeEdit}
+                placeholder="Escreva uma descrição do local"
+                className="border w-full p-2 focus:outline-none resize-none"
+              />
+
+              <div className="flex justify-between items-center">
+                <button
+                  onClick={handleSubmitEdit}
+                  className="bg-accent px-6 focus:outline-none hover:bg-black hover:text-white"
+                  title="Enviar alteração"
+                >
+                  <ArrowRightIcon className="h-6 w-6" />
+                </button>
+                <TrashIcon
+                  className="h-4 w-4 cursor-pointer hover:bg-red-400 hover:text-white"
+                  title="Excluir pergunta"
+                  onClick={handleDelete}
+                />
+              </div>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
