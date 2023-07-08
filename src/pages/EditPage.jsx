@@ -83,7 +83,7 @@ export default function EditPage() {
       <h1 className="text-2xl text-text font-bold mb-4">Página de edição</h1>
       <div className="p-4 bg-white rounded-lg shadow border-none min-h-[50px]">
         <h2 className="text-xl text-center">{place.place}</h2>
-        <p className="w-full  mx-14">
+        <p className="w-90 mx-20">
           <img src={place.image} />
         </p>
         <p className="text-center">Avaliação:{place.rating}</p>
