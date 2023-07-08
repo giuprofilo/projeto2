@@ -52,7 +52,9 @@ export default function TravelSite() {
 
   return (
     <div className=" bgflex flex-col items-center mx-auto py-8">
-      <h1 className="text-2xl text-text font-bold mb-4">Meu Site de Viagens</h1>
+      <h1 className="text-2xl text-text font-bold mb-4 text-center">
+        Meu Site de Viagens
+      </h1>
 
       <div className="flex flex-col items-center">
         <div className=" flex gap-4 mb-4">
@@ -76,14 +78,14 @@ export default function TravelSite() {
                 key={place._id}
                 className="p-4 bg-white rounded-lg shadow border-none min-h-[50px]"
               >
-                <h2 className="text-xl">{place.place}</h2>
-                <p className="w-80">
+                <h2 className="text-xl text-center">{place.place}</h2>
+                <p className="w-80 mx-14">
                   <img src={place.image} />
                 </p>
-                <p>Avaliação:{place.rating}</p>
-                <p>Descrição: {place.description}</p>
+                <p className="text-center">Avaliação:{place.rating}</p>
+                <p className="text-center">Descrição: {place.description}</p>
                 <Link to={`/places/${place._id}`}>
-                  <button className="text-white bg-primary-button px-4 py-2 rounded">
+                  <button className="text-white  bg-primary-button items-end px-4 py-2 rounded">
                     Editar
                   </button>
                 </Link>

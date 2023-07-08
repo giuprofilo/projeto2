@@ -82,19 +82,21 @@ export default function EditPage() {
     <div className=" bg-background flex flex-col items-center mx-auto py-8 w-full">
       <h1 className="text-2xl text-text font-bold mb-4">Página de edição</h1>
       <div className="p-4 bg-white rounded-lg shadow border-none min-h-[50px]">
-        <h2 className="text-xl">{place.place}</h2>
-        <p>
+        <h2 className="text-xl text-center">{place.place}</h2>
+        <p className="w-full  mx-14">
           <img src={place.image} />
         </p>
-        <p>Avaliação:{place.rating}</p>
-        <p>Descrição: {place.description}</p>
+        <p className="text-center">Avaliação:{place.rating}</p>
+        <p className="text-center">Descrição: {place.description}</p>
         <button
           className="text-white bg-primary-button px-4 py-2 rounded"
           onClick={() => setShowFormEdit(true)}
         >
-          <span className="underline text-[#0180C8]">Editar</span>
+          <span>Editar</span>
         </button>
+      </div>
 
+      <div className="p-4  rounded-lg shadow border-none min-h-[50px] mt-5">
         {showFormEdit && (
           <form className=" flex flex-col justify-center items-center rounded w-full shadow-md bg-background bg-opacity-10">
             <div className="bg-white p-4 rounded shadow-lg w-full">
