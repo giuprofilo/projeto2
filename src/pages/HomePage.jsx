@@ -51,7 +51,7 @@ export default function TravelSite() {
   console.log(places);
 
   return (
-    <div className=" bg-background flex flex-col items-center mx-auto py-8">
+    <div className=" bgflex flex-col items-center mx-auto py-8">
       <h1 className="text-2xl text-text font-bold mb-4">Meu Site de Viagens</h1>
 
       <div className="flex flex-col items-center">

@@ -5,7 +5,11 @@ const colors = require("tailwindcss/colors");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/wave-haikei.png')"
+      }
+    },
     colors: {
       text: "#010922",
       background: "#f5f7ff",

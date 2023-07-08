@@ -8,7 +8,7 @@ import AllPosts from "./pages/AllPosts";
 
 function App() {
   return (
-    <div className="bg-background min-h-screen font-mono px-7 pb-14">
+    <div className=" bg-background-2 min-h-screen font-mono px-7 pb-14">
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
