@@ -32,7 +32,7 @@ export default function AllPosts() {
             <p className="text-center">Avaliação:{place.rating}</p>
             <p className="text-center">Descrição: {place.description}</p>
             <Link to={`/places/${place._id}`}>
-              <button className="text-white bg-primary-button px-4 py-2 rounded">
+              <button className="text-white bg-primary-button hover:bg-slate-400 px-4 py-2 rounded">
                 Editar
               </button>
             </Link>

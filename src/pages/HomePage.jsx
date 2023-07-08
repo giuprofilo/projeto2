@@ -59,13 +59,13 @@ export default function TravelSite() {
       <div className="flex flex-col items-center">
         <div className=" flex gap-4 mb-4">
           <Link to="/all">
-            <button className="bg-primary-button px-4 py-2 rounded shadow text-white hover:bg-slate-600 hover:text-white">
+            <button className="bg-secondary-button px-4 py-2 rounded shadow text-white hover:bg-slate-400 hover:text-white">
               Todos os locais
             </button>
           </Link>
 
           <Link to="/create">
-            <button className="bg-primary-button text-white px-4 py-2 rounded shadow hover:bg-slate-600 hover:text-white">
+            <button className="bg-secondary-button text-white px-4 py-2 rounded shadow c hover:bg-slate-400 hover:text-white">
               Adicionar um local
             </button>
           </Link>
@@ -85,7 +85,7 @@ export default function TravelSite() {
                 <p className="text-center">Avaliação:{place.rating}</p>
                 <p className="text-center">Descrição: {place.description}</p>
                 <Link to={`/places/${place._id}`}>
-                  <button className="text-white  bg-primary-button items-end px-4 py-2 rounded">
+                  <button className="text-white  bg-primary-button hover:bg-slate-400 px-4 py-2 rounded">
                     Editar
                   </button>
                 </Link>

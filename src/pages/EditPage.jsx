@@ -105,7 +105,7 @@ export default function EditPage() {
                 onClick={handleShowFormEdit}
               >
                 <XMarkIcon
-                  className="h-6 w-6 bg-accent  hover:bg-black hover:text-white"
+                  className="h-6 w-6  bg-accent  hover:bg-black hover:text-white"
                   title="Fechar"
                 />
               </button>
@@ -155,8 +155,8 @@ export default function EditPage() {
                   <ArrowRightIcon className="h-6 w-6" />
                 </button>
                 <TrashIcon
-                  className="h-4 w-4 cursor-pointer hover:bg-red-400 hover:text-white"
-                  title="Excluir pergunta"
+                  className="h-5 w-5 cursor-pointer hover:bg-red-400 hover:text-white"
+                  title="Excluir local"
                   onClick={handleDelete}
                 />
               </div>
