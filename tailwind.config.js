@@ -9,6 +9,7 @@ export default {
     colors: {
       text: "#010922",
       background: "#f5f7ff",
+      'background-2': '#f0eef6',
       "primary-button": "#5b1ef6",
       "secondary-button": "#f4d3fd",
       accent: "#c71ef6",
@@ -24,3 +25,4 @@ export default {
   },
   plugins: [],
 };
+

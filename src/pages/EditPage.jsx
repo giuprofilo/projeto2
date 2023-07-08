@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   ArrowRightIcon,
-  PencilSquareIcon,
   TrashIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -80,10 +79,10 @@ export default function EditPage() {
   console.log(place);
 
   return (
-    <div className=" bg-background flex flex-col items-center mx-auto py-8">
+    <div className=" bg-background flex flex-col items-center mx-auto py-8 w-full">
       <h1 className="text-2xl text-text font-bold mb-4">Página de edição</h1>
-      <div>
-        <h2>{place.place}</h2>
+      <div className="p-4 bg-white rounded-lg shadow border-none min-h-[50px]">
+        <h2 className="text-xl">{place.place}</h2>
         <p>
           <img src={place.image} />
         </p>
@@ -97,8 +96,8 @@ export default function EditPage() {
         </button>
 
         {showFormEdit && (
-          <form className="fixed inset-0 z-50 flex flex-col justify-center items-center rounded w-full shadow-md bg-gray-300 bg-opacity-50">
-            <div className="bg-white p-4 rounded shadow-lg w-2/3 ">
+          <form className=" flex flex-col justify-center items-center rounded w-full shadow-md bg-background bg-opacity-10">
+            <div className="bg-white p-4 rounded shadow-lg w-full">
               <button
                 className="bg-secondary-button w-full flex justify-end mb-2"
                 onClick={handleShowFormEdit}
