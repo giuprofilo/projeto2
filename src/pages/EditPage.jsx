@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowRightIcon,
   PencilSquareIcon,
@@ -10,6 +10,7 @@ import {
 
 export default function EditPage() {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [place, setPlace] = useState({});
   const [reload, setReload] = useState(false);
@@ -27,10 +28,16 @@ export default function EditPage() {
         `https://webdev103.cyclic.app/travelsite/${params.id}`
       );
       setPlace(response.data);
+      setFormEdit({
+        place: response.data.place,
+        rating: response.data.rating,
+        image: response.data.image,
+        description: response.data.description,
+      });
     }
 
     fetchPlace();
-  }, []);
+  }, [reload]);
 
   async function handleSubmitEdit(e) {
     e.preventDefault();
@@ -42,7 +49,6 @@ export default function EditPage() {
       );
       setShowFormEdit(false);
       setReload(!reload);
-      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +100,7 @@ export default function EditPage() {
           <form className="fixed inset-0 z-50 flex flex-col justify-center items-center rounded w-full shadow-md bg-gray-300 bg-opacity-50">
             <div className="bg-white p-4 rounded shadow-lg w-2/3 ">
               <button
-                className="w-full flex justify-end mb-2"
+                className="bg-secondary-button w-full flex justify-end mb-2"
                 onClick={handleShowFormEdit}
               >
                 <XMarkIcon
@@ -142,7 +148,7 @@ export default function EditPage() {
               <div className="flex justify-between items-center">
                 <button
                   onClick={handleSubmitEdit}
-                  className="bg-accent px-6 focus:outline-none hover:bg-black hover:text-white"
+                  className="bg-secondary-button px-6 focus:outline-none hover:bg-black hover:text-white"
                   title="Enviar alteração"
                 >
                   <ArrowRightIcon className="h-6 w-6" />
